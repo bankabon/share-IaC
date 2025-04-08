@@ -1,0 +1,12 @@
+terraform {
+  required_providers {
+    snowflake = {
+      source  = "Snowflake-Labs/snowflake"
+      version = "0.42.1"
+    }
+  }
+}
+
+provider "snowflake" {
+  role  = "SYSADMIN"
+}
