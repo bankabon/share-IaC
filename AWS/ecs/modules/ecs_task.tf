@@ -79,28 +79,6 @@ resource "aws_ecs_task_definition" "nginx-php" {
         }
       },
       {
-        "name" : "app",
-        "image" : "${local.account}.dkr.ecr.ap-northeast-1.amazonaws.com/app:latest",
-        "cpu" : 0,
-        "portMappings" : [],
-        "essential" : true,
-        "environment" : [],
-        "mountPoints" : [],
-        "volumesFrom" : [],
-        "logConfiguration" : {
-          "logDriver" : "awsfirelens",
-          "options" : {
-            "Name" : "newrelic"
-          },
-          "secretOptions" : [
-            {
-              "name" : "apiKey",
-              "valueFrom" : "${aws_secretsmanager_secret.newrelic.arn}"
-            }
-          ]
-        }
-      },
-      {
         "name": "mysql",
         "image": "mysql:8.0",
         "cpu": 0,
