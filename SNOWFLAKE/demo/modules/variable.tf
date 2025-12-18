@@ -1,14 +1,25 @@
-variable "env" {}
-variable "name" {}
+variable "env" {
+  type        = string
+  description = "環境名（例: production, staging, development）"
+}
+
+variable "name" {
+  type        = string
+  description = "リソース名のプレフィックス"
+}
+
 variable "snowflake_account" {
-  description = "Snowflake account name"
+  description = "Snowflakeアカウント名"
   type        = string
 }
+
 variable "snowflake_user" {
-  description = "Snowflake user name"
+  description = "Snowflakeユーザー名"
   type        = string
 }
+
 variable "snowflake_password" {
-  description = "Snowflake password"
+  description = "Snowflakeパスワード（機密情報のため環境変数での設定を推奨）"
   type        = string
+  sensitive   = true
 }

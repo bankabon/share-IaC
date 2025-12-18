@@ -23,7 +23,7 @@ resource "aws_iam_policy_attachment" "switchrole" {
   for_each = toset(var.account_id)
 
   name       = "switch-role-${each.key}"
-  roles      = [aws_iam_role.switchrole[each.key].name]
-  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
+  roles      = [aws_iam_role.switchrole-fullaccess[each.key].name]
+  policy_arn = var.policy_arn != "" ? var.policy_arn : "arn:aws:iam::aws:policy/ReadOnlyAccess"
   
 }
